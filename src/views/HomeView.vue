@@ -1,71 +1,89 @@
-// dosya: src/views/HomeView.vue
 <template>
-  <div class="home-view">
-    
-    <main class="main-content-wrapper">
+  <div class="home">
+    <div class="container">
       
-      <Sidebar />
-
-      <section class="advert-listing-section">
+      <div class="main-content-wrapper">
         
-        <header class="listing-header">
-          <h2>Vitrin İlanları</h2>
-          <a href="#" class="view-all">Tüm vitrin ilanlarını göster ></a>
-        </header>
+        <SideBar class="sidebar" />
 
-        <div class="advert-grid">
-          <AdvertCard v-for="advert in featuredAdverts" :key="advert.id" :advert="advert" />
+        <div class="content-area">
+          <h2 class="section-title">Vitrin İlanları</h2>
+          
+          <div class="adverts-grid">
+            <AdvertCard 
+              v-for="ad in adverts" 
+              :key="ad.id" 
+              :advert="ad" 
+            />
+          </div>
         </div>
-      </section>
 
-    </main>
-    
+      </div>
+    </div>
+
     <SiteFooter />
   </div>
 </template>
 
 <script setup>
-// Header importu kaldırıldı.
-import SiteFooter from '../components/SiteFooter.vue';
-import Sidebar from '../components/SideBar.vue';
-import AdvertCard from '../components/AdvertCard.vue';
-import { computed } from 'vue';
-import { mockAdverts } from '../data/mockAdverts';
 
-const featuredAdverts = computed(() => mockAdverts.slice(0, 4));
+import { mockAdverts } from '../data/mockAdverts.js';
+import AdvertCard from '../components/AdvertCard.vue';
+
+
+import SideBar from '../components/SideBar.vue';
+import SiteFooter from '../components/SiteFooter.vue';
+
+const adverts = mockAdverts;
 </script>
 
 <style scoped>
+.home {
+  background-color: #f7f7f7;
+  min-height: 100vh;
+  padding-top: 20px;
+  
+  overflow-x: hidden; 
+}
+
+.container {
+  width: 1150px;
+  margin: 0 auto;
+}
+
+
 .main-content-wrapper {
   display: flex;
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 15px;
   gap: 20px;
-  /* KRİTİK DÜZELTME: Header'ın arkasına kaymayı engellemek için boşluk */
-  padding-top: 55px; 
+  align-items: flex-start; 
+  width: 100%;
 }
-.advert-listing-section {
+
+.sidebar {
+  
+  width: 240px;
+  flex-shrink: 0; 
+}
+
+.content-area {
+  
   flex-grow: 1;
+  
+  width: 100%; 
 }
-.listing-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
   margin-bottom: 15px;
-}
-.listing-header h2 {
-  font-size: 1.5em;
   color: #333;
 }
-.view-all {
-  color: #007bff;
-  text-decoration: none;
-  font-size: 0.9em;
-}
-.advert-grid {
+
+.adverts-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
+  
+  grid-template-columns: repeat(4, minmax(180px, 1fr)); 
   gap: 15px;
+  width: 100%;
 }
 </style>

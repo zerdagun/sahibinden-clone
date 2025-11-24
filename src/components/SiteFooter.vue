@@ -4,7 +4,7 @@
       <div class="footer-top">
         <div class="footer-columns">
           
-          <!-- Sütun 1: Kurumsal -->
+          
           <div class="column">
             <h4>Kurumsal</h4>
             <ul>
@@ -17,7 +17,7 @@
             </ul>
           </div>
   
-          <!-- Sütun 2: Hizmetlerimiz -->
+          
           <div class="column">
             <h4>Hizmetlerimiz</h4>
             <ul>
@@ -31,7 +31,7 @@
             </ul>
           </div>
   
-          <!-- Sütun 3: Mağazalar -->
+          
           <div class="column">
             <h4>Mağazalar</h4>
             <ul>
@@ -40,7 +40,7 @@
             </ul>
           </div>
   
-          <!-- Sütun 4: Gizlilik ve Kullanım -->
+          
           <div class="column">
             <h4>Gizlilik ve Kullanım</h4>
             <ul>
@@ -54,7 +54,7 @@
             </ul>
           </div>
   
-          <!-- Sütun 5: Bizi Takip Edin -->
+          
           <div class="column social">
             <h4>Bizi Takip Edin</h4>
             <ul>
@@ -72,20 +72,20 @@
       <div class="footer-bottom">
         
         <div class="contact-area">
-          <!-- 7/24 Müşteri Hizmetleri -->
+          
           <div class="service-item">
             <span class="icon red-circle">📞</span> 
             7/24 Müşteri Hizmetleri
             <p class="service-number">0 850 222 44 44</p>
           </div>
-          <!-- Yardım Merkezi -->
+          
           <div class="service-item">
             <span class="icon red-circle">❓</span> 
             Yardım Merkezi
             <p class="service-link">yardim.sahibinden.com</p>
           </div>
           
-          <!-- Dil Seçimi -->
+          
           <div class="language-selector">
             <label for="lang-select">Dil Seçimi (Language)</label>
             <div class="select-box">
@@ -98,7 +98,7 @@
           </div>
         </div>
         
-        <!-- Telif ve Yasal Metinler -->
+        
         <div class="copyright-section">
           <p class="legal-text">
             sahibinden.com'da yer alan kullanıcıların oluşturduğu tüm içerik, görüş ve bilgilerin doğruluğu, eksiksiz ve değişmez olduğu, yayınlanması ile ilgili yasal yükümlülükler içeriği oluşturan kullanıcıya aittir. Bu içeriğin, görüş ve bilgilerin yanlışlık, eksiklik veya yasalarla düzenlenmiş kurallara aykırılığından sahibinden.com hiçbir şekilde sorumlu değildir. Sorunlarınız için İlan sahibi ile irtibata geçebilirsiniz.
@@ -118,13 +118,11 @@
   </template>
   
   <script setup>
-  // Footer için dinamik bir içerik yok, sadece statik HTML
+  
   </script>
   
   <style scoped>
-  /*
-   * Footer Component Stilleri (Orijinal Görsele Göre)
-   */
+  
   .site-footer {
     background-color: white;
     color: #333;
@@ -132,7 +130,7 @@
     border-top: 1px solid #e0e0e0;
   }
   
-  /* --- TOP BÖLÜMÜ (Kolonlar) --- */
+  
   .footer-top {
     padding: 30px 20px;
     max-width: 1200px;
@@ -146,7 +144,7 @@
   }
   
   .column {
-    flex-basis: 20%; /* 5 sütun için kabaca */
+    flex-basis: 20%; 
     min-width: 120px;
   }
   
@@ -174,10 +172,10 @@
   }
   
   .column a:hover {
-    color: #d9534f; /* Kırmızımsı vurgu */
+    color: #d9534f; 
   }
   
-  /* --- BOTTOM BÖLÜMÜ (İletişim, Yasal Metinler) --- */
+  
   .footer-bottom {
     border-top: 1px solid #e0e0e0;
     padding: 20px 20px;
@@ -207,7 +205,7 @@
   }
   
   .red-circle {
-      background-color: #d9534f; /* Kırmızımsı ton */
+      background-color: #d9534f; 
       color: white;
       border-radius: 50%;
       width: 26px;
@@ -220,7 +218,7 @@
       flex-shrink: 0;
   }
   
-  /* Dil Seçimi */
+  
   .language-selector label {
       display: block;
       font-size: 0.8em;
@@ -257,7 +255,7 @@
       pointer-events: none;
   }
   
-  /* Telif ve Yasal Metinler */
+  
   .legal-text {
       background-color: #f7f7f7;
       border: 1px solid #eee;
@@ -280,7 +278,7 @@
   }
   
   .qr-etbis-icons {
-      /* Görsel klonlama olmadığı için sadece yer tutucular */
+      
       font-size: 1.5em;
       color: #4a90e2;
   }

@@ -5,124 +5,95 @@
         <span class="logo-box">sahibinden.com</span>
       </router-link>
 
-      <div class="search-container">
+      <div class="search-box">
         <input
           type="text"
           placeholder="Kelime, ilan no veya mağaza adı ile ara"
           class="search-input"
         />
-        <button class="search-icon">🔍</button>
+        <button class="search-button">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="#9ea7be" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
       </div>
 
       <nav class="action-nav">
         <a href="#" class="nav-link">Detaylı Arama</a>
-        <a href="#" class="nav-link">Giriş Yap</a>
-        <a href="#" class="nav-link">Hesap Aç</a>
-        <button class="btn-advert">Ücretsiz* İlan Ver</button>
+        <router-link to="/login" class="nav-link">Giriş Yap</router-link>
+        <router-link to="/register" class="nav-link">Hesap Aç</router-link>
+        
+        <button class="btn-advert" @click="isModalOpen = true">Ücretsiz* İlan Ver</button>
       </nav>
     </div>
+
+    <SignupModal v-if="isModalOpen" @close="isModalOpen = false" />
+
   </header>
 </template>
 
 <script setup>
-// script yok
+import { ref } from 'vue';
+
+import SignupModal from './SignupModal.vue';
+
+
+const isModalOpen = ref(false);
 </script>
 
 <style scoped>
+
 .main-header {
   width: 100%;
-  background-color: #394055;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-  z-index: 100;
+  background-color: #3f475f;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .main-bar {
   width: 100%;
-  padding: 12px 32px;
   display: flex;
   align-items: center;
-  gap: 24px;
-  box-sizing: border-box;
+  padding: 0 20px;
+  gap: 20px;
+  height: 100%;
 }
 
-/* Logo */
-.brand-link {
-  text-decoration: none;
-  font-weight: bold;
-  height: 35px;
-  display: flex;
-  align-items: center;
-}
-
+.brand-link { text-decoration: none; display: flex; align-items: center; flex-shrink: 0; }
 .logo-box {
-  background-color: #ffd400;
-  color: #000;
-  padding: 8px 12px;
-  font-size: 1.05em;
-  border-radius: 3px;
-  letter-spacing: 0.5px;
+  background-color: #FFDD00; color: #000; padding: 8px 12px; font-size: 19px; font-weight: 700;
+  border-radius: 2px; line-height: 1.1; display: inline-block;
+  font-family: "SHBGroteskLegacy", Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: -0.5px;
 }
 
-/* Search */
-.search-container {
-  display: flex;
-  align-items: center;
-  background-color: #2b3145;
-  border-radius: 4px;
-  flex-grow: 1;
-  height: 36px;
-  border: 1px solid #1f2433;
+.search-box {
+  display: flex; flex: 1; max-width: 600px; height: 36px;
+  background-color: #2e354a; border-radius: 3px; align-items: center; overflow: hidden;
 }
-
 .search-input {
-  flex-grow: 1;
-  border: none;
-  background: transparent;
-  padding: 0 12px;
-  color: #d5d9e4;
-  font-size: 0.92em;
+  flex: 1; background: transparent; border: none; height: 100%; padding: 0 12px; color: #ddd; font-size: 13px; outline: none;
+}
+.search-input::placeholder { color: #9ea7be; }
+.search-button {
+  width: 40px; height: 100%; background-color: transparent; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 
-.search-input::placeholder {
-  color: #aaa;
-}
-
-.search-icon {
-  background-color: transparent;
-  border: none;
-  color: #9ea7be;
-  padding: 0 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  font-size: 1rem;
-}
-
-/* Nav & Buttons */
 .action-nav {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-left: auto;
-  white-space: nowrap;
-  font-size: 0.92em;
+  display: flex; align-items: center; gap: 20px; margin-left: auto; flex-shrink: 0;
 }
-
 .nav-link {
-  color: #f5f5f5;
-  text-decoration: none;
-  font-size: 0.92em;
+  color: #e0e0e0; text-decoration: none; font-size: 13px; white-space: nowrap; padding: 0 5px;
 }
+.nav-link:hover { text-decoration: underline; }
 
 .btn-advert {
-  background-color: #2f9df4;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  font-size: 0.92em;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
+  background-color: #428bca; color: #fff; border: none; padding: 8px 16px; font-size: 13px;
+  border-radius: 3px; cursor: pointer; font-weight: 600; white-space: nowrap; font-family: Arial, sans-serif;
 }
+.btn-advert:hover { background-color: #357abd; }
 </style>
-

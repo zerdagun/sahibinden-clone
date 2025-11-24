@@ -1,7 +1,7 @@
 <template>
   <aside class="sidebar-menu">
     
-    <!-- 1. Acil İlanlar Bölümü -->
+    
     <div class="section-top-links">
       <a href="#" class="top-link danger">
         <span class="icon">‼️</span> Acil Acil
@@ -13,7 +13,7 @@
 
     <hr class="divider-line">
     
-    <!-- 2. Yepy İle Yenilenmiş Cihazlar -->
+    
     <div class="service-promo">
         <span class="yepy-logo">yepy</span> ile Yenilenmiş Cihazlar 
         <span class="new-tag">yeni</span>
@@ -21,9 +21,9 @@
 
     <hr class="divider-line">
     
-    <!-- 3. Hizmetler (Oto360, Emlak360) -->
+    
     <div class="service-blocks">
-        <!-- Oto360 -->
+        
         <div class="service-item">
             <span class="service-icon yellow-icon">🚕</span>
             <div class="service-details">
@@ -35,7 +35,7 @@
         
         <hr class="divider-line">
 
-        <!-- Emlak360 -->
+       
         <div class="service-item">
             <span class="service-icon blue-icon">🏡</span>
             <div class="service-details">
@@ -46,7 +46,7 @@
 
     <hr class="divider-line">
     
-    <!-- 4. Emlak Kategorisi -->
+    
     <div class="category-block">
       <div class="category-header">
           <span class="category-icon orange-icon">🏠</span>
@@ -121,7 +121,7 @@ function selectCategory(category) {
     margin: 10px 0;
 }
 
-/* --- Yepy/Hizmetler --- */
+
 .service-promo {
     padding: 5px 15px;
     font-size: 0.9em;
@@ -143,7 +143,7 @@ function selectCategory(category) {
     margin-left: 5px;
 }
 
-/* --- Oto360 & Emlak360 Blokları --- */
+
 .service-blocks {
     padding: 0 0;
 }
@@ -182,7 +182,6 @@ function selectCategory(category) {
     margin-top: 5px;
 }
 
-/* --- Kategori Blokları --- */
 .category-block {
     padding: 0 15px;
 }

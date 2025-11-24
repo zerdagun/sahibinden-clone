@@ -10,15 +10,19 @@ import SiteHeader from './components/SiteHeader.vue';
 </script>
 
 <style>
-body {
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-color: #ffffff;
-  color: #213547;
+  padding: 0;
 }
 
-#app {
-  width: 100%;
-  margin: 0;
+body {
+  font-family: 'Roboto', sans-serif; 
+  background-color: #f7f7f7;
+}
+
+a {
+  text-decoration: none; 
 }
 </style>

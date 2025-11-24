@@ -1,214 +1,120 @@
 <template>
-    <div class="product-display-container">
+  <div class="product-detail-page" v-if="product">
+    <div class="container">
       
-      <!-- İlan Başlığı ve Fiyat -->
-      <header class="advert-header">
-        <div class="title-section">
-          <h1>{{ advert.title }}</h1> 
-          <p class="location-text">📍 {{ advert.location }}</p> 
+      <div class="breadcrumb">
+        <ul>
+          <li>Vasıta</li>
+          <li>Otomobil</li>
+          <li>{{ product.brand }}</li>
+          <li>{{ product.series }}</li>
+          <li>{{ product.model }}</li>
+        </ul>
+      </div>
+
+      <div class="classified-header-wrapper">
+        <div class="classified-header">
+          <h1>{{ product.title }}</h1>
         </div>
-        <div class="price-section">
-          <span class="price-value">{{ advert.price }} TL</span> 
+      </div>
+
+      <div class="classified-content">
+        <div class="left-column">
+          <div class="gallery-container">
+            <div class="main-image">
+              <img :src="currentImage" alt="Araç Resmi" />
+              <span class="img-count" v-if="product.images">1/{{ product.images.length }}</span>
+            </div>
+            <div class="thumbnails" v-if="product.images && product.images.length > 1">
+              <img 
+                v-for="(img, index) in product.images" 
+                :key="index" 
+                :src="img" 
+                @click="currentImage = img"
+                :class="{ active: currentImage === img }"
+              />
+            </div>
+          </div>
         </div>
-      </header>
-  
-      <!-- Ana İçerik: Fotoğraflar ve Özellikler Yan Yana -->
-      <main class="main-advert-content">
-        
-        <!-- 1. Fotoğraf ve Galeri Bölümü -->
-        <section class="photo-gallery">
-          <div class="main-photo">
-            <img src="https://placehold.co/400x450/eeeeee/333333?text=ANA+FOTOĞRAF" alt="Ana İlan Fotoğrafı" style="object-fit: contain; max-width: 100%; max-height: 100%;"/>
+
+        <div class="center-column">
+          <div class="price-section">
+            {{ product.price }} {{ product.currency }}
           </div>
-          <div class="thumbnail-list">
-            <button class="thumb-button">1/ Fotoğraf</button>
-            <button class="thumb-button">Büyük Fotoğraf 🔍</button>
-          </div>
-        </section>
-  
-        <!-- 2. Özellikler ve Satıcı Bilgileri -->
-        <aside class="details-sidebar">
-          <!-- Temel Özellikler Tablosu -->
-          <table class="specs-table">
-            <tr v-for="(value, key) in advert.specs" :key="key">
-              <td class="spec-key">{{ key }}</td>
-              <td class="spec-value">{{ value }}</td>
-            </tr>
-          </table>
-  
-          <hr>
-  
-          <!-- Satıcı/Mağaza Bilgisi -->
-          <div class="seller-info">
-            <div class="seller-name">{{ advert.seller.name }}</div>
-            <p class="seller-type">{{ advert.seller.type }}</p>
-            
-            <!-- Telefon Butonları -->
-            <button class="btn-contact">📞 {{ advert.seller.phone1 }}</button>
-            <button class="btn-contact">📞 {{ advert.seller.phone2 }}</button>
-            
-            <!-- Satıcının Diğer İlanları -->
-            <a href="#" class="other-adverts">→ Tüm İlanlarına Git</a>
-          </div>
-          
-          <!-- Aksiyon Butonları -->
-          <div class="action-buttons">
-              <button class="btn-action btn-fav">⭐ Favorilere Ekle</button>
-          </div>
-        </aside>
-      </main>
-  
-      <!-- İlan Detayları ve Teknik Özellikler Alt Bölümü -->
-      <section class="bottom-details">
-          <h2>İlan Detayları</h2>
-          <p>{{ advert.description }}</p>
-          <h2>Teknik Özellikler</h2>
-      </section>
-  
+          <ul class="classified-info-list">
+            <li><strong>İlan No</strong> <span class="red-text">{{ product.id }}</span></li>
+            <li><strong>Marka</strong> <span>{{ product.brand }}</span></li>
+            <li><strong>Model</strong> <span>{{ product.model }}</span></li>
+            <li><strong>Yıl</strong> <span>{{ product.year }}</span></li>
+            <li><strong>KM</strong> <span>{{ product.km }}</span></li>
+          </ul>
+        </div>
+      </div>
+
     </div>
-  </template>
-  
+  </div>
+  <div v-else style="padding:20px; text-align:center; color:#999;">
+    Ürün görüntülenemiyor. (Component sunumu için örnek veri seçilmedi)
+  </div>
+</template>
+
 <script setup>
-import { computed } from 'vue';
-import { defineProps } from 'vue';
-import { mockAdverts } from '../data/mockAdverts';
+import { ref, onMounted, watch } from 'vue';
+import { useRoute } from 'vue-router';
+import { mockAdverts } from '../data/mockAdverts.js'; 
+import SellerProducts from '../components/SellerProducts.vue';
 
-const props = defineProps({
-  id: {
-    type: [String, Number],
-    required: true
+const route = useRoute();
+const product = ref(null);
+const currentImage = ref('');
+
+const loadProduct = () => {
+  let foundProduct = null;
+  const routeId = parseInt(route.params.id);
+
+  
+  if (!isNaN(routeId)) {
+    foundProduct = mockAdverts.find(p => p.id === routeId);
+  } 
+  
+  else {
+    
+    foundProduct = mockAdverts[0];
   }
-});
-
-const emptyAdvert = {
-  id: props.id,
-  title: 'İlan bulunamadı',
-  location: '-',
-  price: '-',
-  seller: {
-    name: '-',
-    type: '-',
-    phone1: '-',
-    phone2: '-'
-  },
-  specs: {},
-  description: 'Bu ID için ilan kaydı bulunamadı.'
+  
+  if (foundProduct) {
+  
+    const productData = { ...foundProduct };
+    
+    
+    if (!productData.images || productData.images.length === 0) {
+      productData.images = productData.imageUrl ? [productData.imageUrl] : [];
+    }
+    
+    currentImage.value = productData.images[0] || '';
+    product.value = productData;
+  }
 };
 
-const advert = computed(() => {
-  const numericId = Number(props.id);
-  const found = mockAdverts.find((item) =>
-    Number.isNaN(numericId) ? item.id === props.id : item.id === numericId
-  );
-  return found ?? emptyAdvert;
-});
+onMounted(loadProduct);
+watch(() => route.params.id, loadProduct);
 </script>
-  
-  <style scoped>
-  .product-display-container {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 15px;
-  }
-  .advert-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-  }
-  .advert-header h1 {
-    font-size: 1.6em;
-    margin: 0;
-  }
-  .location-text {
-    font-size: 0.9em;
-    color: #666;
-  }
-  .price-value {
-    font-size: 2em;
-    font-weight: bold;
-    color: #d9534f;
-  }
-  .main-advert-content {
-    display: flex;
-    gap: 30px;
-  }
-  .photo-gallery {
-    flex: 2;
-  }
-  .details-sidebar {
-    flex: 1;
-  }
-  .main-photo {
-    height: 450px;
-    background-color: #f5f5f5;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .thumbnail-list {
-      display: flex;
-      gap: 10px;
-  }
-  .thumb-button {
-      padding: 8px 15px;
-      border: 1px solid #ddd;
-      background: #fff;
-      border-radius: 4px;
-      cursor: pointer;
-  }
-  .specs-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  .specs-table td {
-    padding: 8px 0;
-    border-bottom: 1px dashed #eee;
-  }
-  .spec-key {
-    font-weight: 500;
-    color: #777;
-  }
-  .seller-info {
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-  }
-  .btn-contact {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-  }
-  .action-buttons {
-      margin-top: 20px;
-  }
-  .btn-action {
-      width: 100%;
-      padding: 10px;
-      background-color: #fff;
-      border: 1px solid #007bff;
-      color: #007bff;
-      border-radius: 4px;
-      font-weight: bold;
-  }
-  .bottom-details {
-      margin-top: 40px;
-  }
-  .bottom-details h2 {
-      font-size: 1.4em;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 10px;
-      margin-bottom: 15px;
-  }
-  </style>
-  
+
+<style scoped>
+
+* { box-sizing: border-box; }
+.product-detail-page { background-color: #f7f7f7; padding: 20px; font-family: Arial, sans-serif; }
+.container { width: 100%; max-width: 1000px; margin: 0 auto; }
+.classified-header h1 { font-size: 18px; color: #333; margin-bottom: 10px; }
+.classified-content { display: flex; gap: 20px; }
+.left-column { width: 50%; }
+.center-column { width: 50%; }
+.main-image img { width: 100%; height: 300px; object-fit: contain; background: #eee; }
+.thumbnails { display: flex; gap: 5px; margin-top: 5px; }
+.thumbnails img { width: 60px; height: 45px; object-fit: cover; cursor: pointer; border: 2px solid transparent; }
+.thumbnails img.active { border-color: #ffd300; }
+.price-section { color: #3264c3; font-size: 20px; font-weight: bold; margin-bottom: 15px; }
+.classified-info-list { list-style: none; padding: 0; }
+.classified-info-list li { display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding: 5px 0; font-size: 13px; }
+.red-text { color: #d00; font-weight: bold; }
+</style>

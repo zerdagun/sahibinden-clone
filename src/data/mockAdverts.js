@@ -1,155 +1,135 @@
 export const mockAdverts = [
   {
-    id: 1,
-    title: 'AKÇİNLER OTO DAN 2023 MODEL BMW X1 SDRIVE20I M SPORT',
-    location: 'Manisa Yunusemre / Evrenos Mh',
-    price: '3.445.000',
+    id: 1284060015,
+    title: "2023 GRECALE GT- 4K ISITMA- SOĞUTMA - OTONOM-AİR-21 JANT BAYİ",
+    price: "6.975.000",
+    currency: "TL",
+    location: "Konya / Karatay",
+    date: "19 Kasım 2025",
+    brand: "Maserati",
+    series: "Grecale",
+    model: "2.0 Hybrid GT",
     year: 2023,
-    km: '42.500',
-    fuelType: 'Hybrid',
-    imageUrl: 'https://placehold.co/300x200?text=BMW+X1',
-    description:
-      'Tüm ilan detayları ve araç bilgileri buraya gelir. İlan sahibi tarafından detaylı açıklama metni bu alana yerleştirilir.',
-    specs: {
-      'İlan No': '2273873677',
-      'İlan Tarihi': '15 Ekim 2025',
-      Marka: 'BMW',
-      Seri: 'X1',
-      Model: '20i sDrive M Sport',
-      Yıl: 2023,
-      'Yakıt Tipi': 'Hybrid',
-      Vites: 'Otomatik',
-      KM: '42.500',
-      'Kasa Tipi': 'SUV'
-    },
-    seller: {
-      id: 'akcinler-oto',
-      name: 'Ramiz Akçin',
-      type: 'Akçinler Oto 2. El',
-      phone1: '0 (236) 233 35 35',
-      phone2: '0 (555) 286 71 80'
-    }
+    fuelType: "Hibrit",
+    gear: "Otomatik",
+    km: "40.000",
+    caseType: "SUV",
+    power: "300 hp",
+    engine: "1995 cc",
+    traction: "4x4",
+    color: "Beyaz",
+    fromWho: "Galeriden",
+    sellerName: "ENGİNİUS GROUP",
+    sellerPhone: "0 (507) 974 22 22",
+    
+    imageUrl: '/img/maserati1.png', 
+    images: [
+      '/img/maserati1.png',
+      '/img/maserati2.png',
+      '/img/maserati3.png',
+      '/img/maserati4.png'
+
+    ],
+    features: ["FER-MAS ÇIKIŞLI", "PANAROMİK CAM TAVAN", "SONUS-FABER SES SİSTEMİ", "21 JANT"]
   },
   {
-    id: 2,
-    title: 'AKÇİNLER OTO DAN 2022 MODEL BMW X3 XDRIVE30I PRESTIGE',
-    location: 'İzmir Konak / Alsancak',
-    price: '4.250.000',
-    year: 2022,
-    km: '28.000',
-    fuelType: 'Benzin',
-    imageUrl: 'https://placehold.co/300x200?text=BMW+X3',
-    description:
-      'Yetkili servis bakımlı, hatasız ve garantisi devam eden BMW X3.',
-    specs: {
-      'İlan No': '2273874000',
-      'İlan Tarihi': '01 Kasım 2025',
-      Marka: 'BMW',
-      Seri: 'X3',
-      Model: '30i xDrive Prestige',
-      Yıl: 2022,
-      'Yakıt Tipi': 'Benzin',
-      Vites: 'Otomatik',
-      KM: '28.000',
-      'Kasa Tipi': 'SUV'
-    },
-    seller: {
-      id: 'akcinler-oto',
-      name: 'Ramiz Akçin',
-      type: 'Akçinler Oto 2. El',
-      phone1: '0 (236) 233 35 35',
-      phone2: '0 (555) 286 71 80'
-    }
+    id: 1282656936,
+    title: "ENGİNİUS GROUP - 2007 MODEL FACELIFT DÖNÜŞÜM",
+    price: "1.910.000",
+    currency: "TL",
+    location: "Konya / Karatay",
+    date: "20 Kasım 2025",
+    brand: "Land Rover",
+    series: "Range Rover",
+    model: "3.6 TDV8 Vogue",
+    year: 2007,
+    fuelType: "Dizel",
+    gear: "Otomatik",
+    km: "407.000",
+    caseType: "SUV",
+    power: "272 hp",
+    engine: "3628 cc",
+    traction: "4x4",
+    color: "Siyah",
+    fromWho: "Galeriden",
+    sellerName: "ENGİNİUS GROUP",
+    sellerPhone: "0 (507) 974 22 22",
+    
+    imageUrl: '/img/range1.png',
+    images: [
+      '/img/range1.png',
+      '/img/range2.png',
+      '/img/range3.png',
+      '/img/range4.png'
+    ],
+    features: ["FACELIFT DÖNÜŞÜM", "22 İNÇ JANT", "ISITMA SOĞUTMA", "HARMAN KARDON"]
   },
   {
-    id: 3,
-    title: 'CITY MOTORS 2021 MERCEDES GLA 200 AMG',
-    location: 'Ankara Çankaya / Gaziosmanpaşa',
-    price: '3.150.000',
-    year: 2021,
-    km: '35.000',
-    fuelType: 'Benzin',
-    imageUrl: 'https://placehold.co/300x200?text=GLA+200',
-    description: 'Bakımlı, boyasız ve düşük kilometreli Mercedes GLA 200 AMG.',
-    specs: {
-      'İlan No': '2273885000',
-      'İlan Tarihi': '20 Ekim 2025',
-      Marka: 'Mercedes',
-      Seri: 'GLA',
-      Model: '200 AMG',
-      Yıl: 2021,
-      'Yakıt Tipi': 'Benzin',
-      Vites: 'Otomatik',
-      KM: '35.000',
-      'Kasa Tipi': 'SUV'
-    },
-    seller: {
-      id: 'city-motors',
-      name: 'City Motors',
-      type: 'City Motors Premium',
-      phone1: '0 (312) 444 00 01',
-      phone2: '0 (555) 000 00 00'
-    }
-  },
-  {
-    id: 4,
-    title: 'CITY MOTORS 2023 VOLVO XC40 RECHARGE PLUS',
-    location: 'Ankara Çankaya / Gaziosmanpaşa',
-    price: '2.950.000',
+    
+    id: 1283776874,
+    title: "SAHİBİNDEN 2023 MODEL BMW 5.20i M SPORT - HATASIZ",
+    price: "4.350.000",
+    currency: "TL",
+    location: "İstanbul / Kadıköy",
+    date: "24 Kasım 2025",
+    brand: "BMW",
+    series: "5 Serisi",
+    model: "5.20i M Sport",
     year: 2023,
-    km: '18.500',
-    fuelType: 'Elektrik',
-    imageUrl: 'https://placehold.co/300x200?text=VOLVO+XC40',
-    description: 'Elektrikli Volvo XC40 Recharge Plus, City Motors güvencesiyle.',
-    specs: {
-      'İlan No': '2273899000',
-      'İlan Tarihi': '05 Kasım 2025',
-      Marka: 'Volvo',
-      Seri: 'XC40',
-      Model: 'Recharge Plus',
-      Yıl: 2023,
-      'Yakıt Tipi': 'Elektrik',
-      Vites: 'Otomatik',
-      KM: '18.500',
-      'Kasa Tipi': 'SUV'
-    },
-    seller: {
-      id: 'city-motors',
-      name: 'City Motors',
-      type: 'City Motors Premium',
-      phone1: '0 (312) 444 00 01',
-      phone2: '0 (555) 000 00 00'
-    }
+    fuelType: "Benzin",
+    gear: "Otomatik",
+    km: "18.000",
+    caseType: "Sedan",
+    power: "170 hp",
+    engine: "1597 cc",
+    traction: "Arkadan",
+    color: "Beyaz",
+    fromWho: "Sahibinden",
+    sellerName: "Mert K.",
+    sellerPhone: "0 (533) 123 45 67",
+    
+    imageUrl: '/img/bmw1.png',
+    images: [
+      '/img/bmw1.png',
+      '/img/bmw2.png',
+      '/img/bmw3.png',
+      '/img/bmw4.png'
+    ],
+    features: ["HAYALET EKRAN", "VAKUMLU KAPILAR", "NEXT 100 PAKET", "HARMAN KARDON"]
   },
   {
-    id: 5,
-    title: 'BURSASPOR OTO 2022 AUDI Q3 35 TFSI ADVANCED',
-    location: 'Bursa Nilüfer / FSM Bulvarı',
-    price: '2.780.000',
-    year: 2022,
-    km: '32.000',
-    fuelType: 'Benzin',
-    imageUrl: 'https://placehold.co/300x200?text=Audi+Q3',
-    description: 'Yetkili servis bakımlı Audi Q3 Advanced paket.',
-    specs: {
-      'İlan No': '2273900000',
-      'İlan Tarihi': '10 Kasım 2025',
-      Marka: 'Audi',
-      Seri: 'Q3',
-      Model: '35 TFSI Advanced',
-      Yıl: 2022,
-      'Yakıt Tipi': 'Benzin',
-      Vites: 'Otomatik',
-      KM: '32.000',
-      'Kasa Tipi': 'SUV'
-    },
-    seller: {
-      id: 'bursaspor-oto',
-      name: 'Bursaspor Oto',
-      type: 'Bursaspor Galeri',
-      phone1: '0 (224) 333 33 33',
-      phone2: '0 (555) 222 22 22'
-    }
+    
+    id: 1265250072,
+    title: "ÇELİK A.Ş - 2018 HITACHI 690 LCH - YETKİLİ SERVİS BAKIMLI",
+    price: "9.750.000", 
+    currency: "TL",
+    location: "Ankara / Yenimahalle",
+    date: "24 Kasım 2025",
+    brand: "Hitachi",
+    series: "ZX 690 LCH-5A",
+    model: "690 LCH",
+    year: 2018,
+    fuelType: "Dizel",
+    gear: "-",
+    km: "9.500 Saat", 
+    caseType: "Paletli",
+    power: "460 hp",
+    engine: "Isuzu",
+    traction: "-",
+    color: "Turuncu",
+    fromWho: "Galeriden",
+    sellerName: "ÇELİK A.Ş.",
+    sellerPhone: "0 (532) 987 65 43",
+    
+    
+    imageUrl: '/img/hitachi1.png',
+    images: [
+      '/img/hitachi1.png',
+      '/img/hitachi2.png',
+      '/img/hitachi3.png',
+      '/img/hitachi4.png'
+    ],
+    
+    features: ["YETKİLİ SERVİS BAKIMLI", "KIRICI HATTI MEVCUT", "KLİMA", "ORİJİNAL BOYASIZ"]
   }
 ];
-
